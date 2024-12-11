@@ -1,3 +1,5 @@
+#Apartado que uso para hacer pruebas, pueden haber cosas raras xD
+
 import hashlib
 
 data = 0  # Inicia como un número entero
@@ -19,3 +21,4 @@ while True:
 
     # Incrementa el valor de data
     data += 1
+#Teoria de que pueden haber dos hashes md5 iguales para diferentes origenes

@@ -1,1 +1,1 @@
-Actividades hechas en classe del apartado "Slides"
+Actividades hechas en clase del apartado "Slides"

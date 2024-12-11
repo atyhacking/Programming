@@ -1,0 +1,93 @@
+
+Vés al contingut principal
+ENTI - UB
+
+    Inici
+    Tauler
+    Els meus cursos
+
+2
+
+    Curs
+    Participants
+    Qualificacions
+    Competències
+
+ENTI - UB
+
+Introducció a la Programació
+
+    2024-25
+    GRAUS UNIVERSITARIS
+    Ciberseguretat
+    Curs 1
+    Semestre 1
+
+Blocs
+Section outline
+
+General
+Contreu-ho tot
+
+    Anuncis Fòrum
+    Guia docent d'Introducció a la programació Fitxer
+
+Slides
+
+    Sessions 1&2 Fitxer
+    Session 3 - Nested lists, list comprehension, Tuples, Dictionariies and Sets Fitxer
+    Session 4 - Control flow, If/else, for and while Fitxer
+    Sessió 6 - Functions Fitxer
+    Sessió 8 - Functions II Fitxer
+    Map and Filter with solutions Fitxer
+    Sessió 10 - Handle files Fitxer
+    Sessió 12/11 Fitxer
+    Modules and Libraries I Fitxer
+    Module os Fitxer
+    Exceptions Fitxer
+    Git and GitHub Fitxer
+    Requests module Fitxer
+    Activitat 1 Fitxer
+    Activitat 2 Fitxer
+    Activitat 3 Fitxer
+
+Exercicis resolts (Treballats a classe)
+
+    Solució - exercici 1 Fitxer
+    Solució - exercici 2 Fitxer
+    Solució - exercici 3 Fitxer
+    Solució - exercici 4 Fitxer
+    Activitat - sessió 3 Fitxer
+    Activitat 2 - sessió 3 Fitxer
+    Solucions - sessió 4 Fitxer
+    Solucions - sessió 5 Fitxer
+    Solucions - sessió 7 Fitxer
+    Solucions - sessió 8 Fitxer
+    Solucions - sessió 9 Fitxer
+    Solucions - 22/10 Fitxer
+    Activitat 1 - Exemple de Solució per Sergio i Jordi Fòrum
+
+List of Exercises
+
+    List Fitxer
+    List of exercises - If/else , for , while Fitxer
+    List of exercises 2 Fitxer
+    Exercicis Fitxer
+
+Material extra
+
+    message - exercise in session 3 Fitxer
+    quotes Fitxer
+    server_log Fitxer
+
+Examens
+
+    Primer examen Tasca
+    Oberta el dimecres, 23 d’octubre 2024, 10:30
+    Venciment: dimecres, 23 d’octubre 2024, 14:30
+    Solucions - primer examen Fitxer
+
+    Final Project
+        Guia Projecte Final Fitxer
+        Grupos Fitxer
+
