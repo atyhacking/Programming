@@ -2,74 +2,74 @@ def main():
     print("This program allows you to search through data about congressional voting districts")
     print("and determine whether a particular state is gerrymandered.")
     
-    state_name = input("Which state do you want to look up? ").strip()
-    districts_file = "districts.txt"
-    voters_file = "eligible_voters.txt"
+    nombreEstado = input("Which state do you want to look up? ").strip()
+    archivoDistritos = "districts.txt"
+    archivoVotantes = "eligible_voters.txt"
 
-    districts_data = read_file(districts_file)
-    state_districts = find_state_data(state_name, districts_data)
+    datosDistritos = leerArchivo(archivoDistritos)
+    distritosEstado = encontrarDatosEstado(nombreEstado, datosDistritos)
     
-    if not state_districts:
-        print(f'"{state_name}" not found.')
+    if not distritosEstado:
+        print(f'"{nombreEstado}" not found.')
         return
     
-    voters_data = read_file(voters_file)
-    state_voters = find_state_data(state_name, voters_data)
+    datosVotantes = leerArchivo(archivoVotantes)
+    votantesEstado = encontrarDatosEstado(nombreEstado, datosVotantes)
 
-    if not state_voters:
-        print(f'Eligible voters data for "{state_name}" not found.')
+    if not votantesEstado:
+        print(f'Eligible voters data for "{nombreEstado}" not found.')
         return
     
-    wasted_dem, wasted_rep, total_votes = calculate_wasted_votes(state_districts)
-    eligible_voters = int(state_voters.split(",")[1])
+    votosPerdidosDem, votosPerdidosRep, votosTotales = calcularVotosPerdidos(distritosEstado)
+    votantesElegibles = int(votantesEstado.split(",")[1])
     
-    print(f"Total Wasted Democratic votes: {wasted_dem}")
-    print(f"Total Wasted Republican votes: {wasted_rep}")
-    print(f"{eligible_voters} eligible voters")
+    print(f"Total Wasted Democratic votes: {votosPerdidosDem}")
+    print(f"Total Wasted Republican votes: {votosPerdidosRep}")
+    print(f"{votantesElegibles} eligible voters")
     
-    advantage = determine_gerrymandering(wasted_dem, wasted_rep, total_votes)
-    if advantage:
-        print(f"The {advantage} have gained an advantage from gerrymandering in {state_name}.")
+    ventaja = determinarGerrymandering(votosPerdidosDem, votosPerdidosRep, votosTotales)
+    if ventaja:
+        print(f"The {ventaja} have gained an advantage from gerrymandering in {nombreEstado}.")
     else:
-        print(f"There is no significant gerrymandering in {state_name}.")
+        print(f"There is no significant gerrymandering in {nombreEstado}.")
 
-def read_file(filename):
-    with open(filename, "r") as file:
-        return file.readlines()
+def leerArchivo(nombreArchivo):
+    with open(nombreArchivo, "r") as archivo:
+        return archivo.readlines()
 
-def find_state_data(state_name, data_lines):
-    state_name_lower = state_name.lower()
-    for line in data_lines:
-        if line.split(",")[0].strip().lower() == state_name_lower:
-            return line.strip()
+def encontrarDatosEstado(nombreEstado, lineasDatos):
+    nombreEstadoMinuscula = nombreEstado.lower()
+    for linea in lineasDatos:
+        if linea.split(",")[0].strip().lower() == nombreEstadoMinuscula:
+            return linea.strip()
     return None
 
-def calculate_wasted_votes(state_data):
-    data = state_data.split(",")[1:]
-    wasted_dem, wasted_rep, total_votes = 0, 0, 0
+def calcularVotosPerdidos(datosEstado):
+    datos = datosEstado.split(",")[1:]
+    votosPerdidosDem, votosPerdidosRep, votosTotales = 0, 0, 0
     
-    for i in range(0, len(data), 3):
-        dem_votes = int(data[i + 1])
-        rep_votes = int(data[i + 2])
-        total_district_votes = dem_votes + rep_votes
-        total_votes += total_district_votes
+    for i in range(0, len(datos), 3):
+        votosDem = int(datos[i + 1])
+        votosRep = int(datos[i + 2])
+        votosTotalesDistrito = votosDem + votosRep
+        votosTotales += votosTotalesDistrito
 
-        winning_votes = (total_district_votes // 2) + 1
-        if dem_votes > rep_votes:
-            wasted_dem += dem_votes - winning_votes
-            wasted_rep += rep_votes
+        votosGanadores = (votosTotalesDistrito // 2) + 1
+        if votosDem > votosRep:
+            votosPerdidosDem += votosDem - votosGanadores
+            votosPerdidosRep += votosRep
         else:
-            wasted_rep += rep_votes - winning_votes
-            wasted_dem += dem_votes
+            votosPerdidosRep += votosRep - votosGanadores
+            votosPerdidosDem += votosDem
 
-    return wasted_dem, wasted_rep, total_votes
+    return votosPerdidosDem, votosPerdidosRep, votosTotales
 
-def determine_gerrymandering(wasted_dem, wasted_rep, total_votes):
-    difference = abs(wasted_dem - wasted_rep)
-    percentage = (difference / total_votes) * 100
+def determinarGerrymandering(votosPerdidosDem, votosPerdidosRep, votosTotales):
+    diferencia = abs(votosPerdidosDem - votosPerdidosRep)
+    porcentaje = (diferencia / votosTotales) * 100
 
-    if percentage >= 7:
-        return "Democrats" if wasted_dem > wasted_rep else "Republicans"
+    if porcentaje >= 7:
+        return "Democrats" if votosPerdidosDem > votosPerdidosRep else "Republicans"
     return None
 
 if __name__ == "__main__":
